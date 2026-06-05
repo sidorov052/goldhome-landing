@@ -315,6 +315,7 @@ const IMG = {
   ikos:         GH + "/uploads/houses/1775751605152-572673618.png",
   oykia:        GH + "/uploads/houses/1775751299742-887128857.png",
   amaltea:      GH + "/uploads/houses/1775751083263-334411630.png",
+  production:   GH + "/img/placeholder-production.png",
 };
 
 /* ============================================================
@@ -725,6 +726,52 @@ function Hero() {
 }
 
 /* ============================================================
+   PHOTO STRIP
+   ============================================================ */
+
+function PhotoStrip() {
+  const photos = [
+    { src: IMG.ikos,      label: "Икос · 142 м²",    tag: "Казань" },
+    { src: IMG.amaltea,   label: "Амальтея · 70 м²",  tag: "Тюмень" },
+    { src: IMG.oykia,     label: "Ойкиа · 60 м²",     tag: "Краснодар" },
+    { src: IMG.houseWood, label: "Хопс · 159 м²",     tag: "Сочи" },
+  ];
+  return (
+    <div style={{ padding: "0 64px 80px" }}>
+      <div style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+        {photos.map((p, i) => (
+          <div key={i} style={{ position: "relative", borderRadius: 20, overflow: "hidden", height: 300, cursor: "pointer" }}>
+            <img src={p.src} alt={p.label} loading="lazy" style={{
+              width: "100%", height: "100%", objectFit: "cover", display: "block",
+              transition: "transform .4s ease",
+            }}
+            onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
+            onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+            />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to top, rgba(42,38,34,0.72) 0%, rgba(42,38,34,0) 55%)",
+            }}/>
+            <div style={{ position: "absolute", bottom: 18, left: 18, right: 18 }}>
+              <div style={{
+                display: "inline-block", fontSize: 11, fontFamily: "var(--font-mono)",
+                background: "var(--terra)", color: "#fff",
+                padding: "3px 8px", borderRadius: 6, marginBottom: 6,
+                letterSpacing: "0.05em",
+              }}>{p.tag}</div>
+              <div style={{
+                color: "#fff", fontFamily: "var(--font-display)", fontWeight: 500,
+                fontSize: 16, letterSpacing: "-0.01em",
+              }}>{p.label}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
    PORTFOLIO
    ============================================================ */
 
@@ -836,17 +883,17 @@ function Portfolio() {
 function WhomFor() {
   const items = [
     {
-      icon: "home", num: "01",
+      icon: "home", num: "01", photo: IMG.houseSip,
       title: "Хотите свой дом, но не готовы ждать 2 года",
       body: "Кирпич — это 1,5 года стройки и кредит на 20 лет. СИП — переедете до Нового года, если решите сейчас."
     },
     {
-      icon: "wallet", num: "02",
+      icon: "wallet", num: "02", photo: IMG.amaltea,
       title: "Используете маткапитал на дом, а не на квартиру",
       body: "484 000 ₽ маткапитала — до 25% стоимости готового домокомплекта. Помогаем с оформлением документов."
     },
     {
-      icon: "tree", num: "03",
+      icon: "tree", num: "03", photo: IMG.ikos,
       title: "Устали от соседей за стеной и шума двора",
       body: "Свой участок, своя тишина, свой воздух. Без панелек, лифтов и протечек сверху от соседей."
     },
@@ -870,25 +917,42 @@ function WhomFor() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
           {items.map((it) => (
             <div key={it.num} style={{
-              background: "#fff", borderRadius: 22, padding: 28,
+              background: "#fff", borderRadius: 22, overflow: "hidden",
               border: "1px solid var(--line)",
-              display: "flex", flexDirection: "column", gap: 18, minHeight: 280,
+              display: "flex", flexDirection: "column",
             }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
+              {/* Photo */}
+              <div style={{ position: "relative", height: 220, overflow: "hidden", flexShrink: 0 }}>
+                <img src={it.photo} alt={it.title} loading="lazy" style={{
+                  width: "100%", height: "100%", objectFit: "cover", display: "block",
+                  transition: "transform .4s ease",
+                }}
+                onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
+                onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                />
                 <div style={{
-                  width: 56, height: 56, borderRadius: 16,
+                  position: "absolute", top: 14, right: 14,
+                  background: "rgba(255,255,255,0.9)", backdropFilter: "blur(8px)",
+                  borderRadius: 99, padding: "4px 12px",
+                }}>
+                  <span className="num" style={{ fontSize: 12, color: "var(--ink-3)" }}>{it.num} / 03</span>
+                </div>
+              </div>
+              {/* Content */}
+              <div style={{ padding: "24px 28px 28px", display: "flex", flexDirection: "column", gap: 14, flex: 1 }}>
+                <div style={{
+                  width: 48, height: 48, borderRadius: 14,
                   background: "var(--bg-soft)", color: "var(--terra)",
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
-                  <Icon name={it.icon} size={26}/>
+                  <Icon name={it.icon} size={22}/>
                 </div>
-                <div className="num" style={{ fontSize: 14, color: "var(--ink-3)" }}>{it.num} / 03</div>
-              </div>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 22, lineHeight: 1.15, letterSpacing: "-0.01em" }}>
-                {it.title}
-              </div>
-              <div style={{ fontSize: 15, color: "var(--ink-2)", lineHeight: 1.5 }}>
-                {it.body}
+                <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 20, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
+                  {it.title}
+                </div>
+                <div style={{ fontSize: 15, color: "var(--ink-2)", lineHeight: 1.5 }}>
+                  {it.body}
+                </div>
               </div>
             </div>
           ))}
@@ -911,6 +975,7 @@ function Services() {
       body: "Привезём готовый набор панелей на ваш участок. Соберёте сами или с нашей бригадой. Производство 10–15 дней.",
       cta: "Подобрать комплект",
       accent: false,
+      img: IMG.oykia,
     },
     {
       tag: "Главное предложение",
@@ -919,6 +984,7 @@ function Services() {
       body: "Всё включено: проект, фундамент, коробка, отделка, инженерия. Вы получаете ключи. От 2 до 4 месяцев.",
       cta: "Рассчитать под ключ",
       accent: true,
+      img: IMG.ikos,
     },
     {
       tag: "Оптом",
@@ -927,6 +993,7 @@ function Services() {
       body: "Для дилеров, бригад, частной стройки. Производство Тюмень + Краснодар. Доставка от 10 м³ по России.",
       cta: "Запросить прайс",
       accent: false,
+      img: IMG.amaltea,
     },
   ];
 
@@ -944,25 +1011,31 @@ function Services() {
               background: s.accent ? "var(--ink)" : "#fff",
               color: s.accent ? "#fff" : "var(--ink)",
               border: s.accent ? "1px solid var(--ink)" : "1px solid var(--line)",
-              borderRadius: 24, padding: 32,
-              display: "flex", flexDirection: "column", gap: 20,
-              minHeight: 440, position: "relative", overflow: "hidden",
+              borderRadius: 24,
+              display: "flex", flexDirection: "column",
+              minHeight: 480, position: "relative", overflow: "hidden",
             }}>
-              {s.accent && (
-                <div style={{
-                  position: "absolute", top: 0, right: 0,
-                  width: 180, height: 180, borderRadius: "50%",
-                  background: "radial-gradient(circle, rgba(201,123,74,0.5), transparent 70%)",
-                  transform: "translate(40%, -40%)",
-                  pointerEvents: "none"
+              {/* Photo at top */}
+              <div style={{ position: "relative", height: 200, flexShrink: 0 }}>
+                <img src={s.img} alt={s.title} loading="lazy" style={{
+                  width: "100%", height: "100%", objectFit: "cover", display: "block",
                 }}/>
-              )}
-
-              <div className="chip" style={s.accent
-                ? { background: "rgba(201,123,74,0.18)", color: "#FBC79B", border: "1px solid rgba(201,123,74,0.35)", alignSelf: "start" }
-                : { alignSelf: "start" }}>
-                {s.tag}
+                <div style={{
+                  position: "absolute", inset: 0,
+                  background: s.accent
+                    ? "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(42,38,34,0.9) 100%)"
+                    : "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(255,255,255,0.95) 100%)",
+                }}/>
+                <div style={{ position: "absolute", bottom: 16, left: 24 }}>
+                  <div className="chip" style={s.accent
+                    ? { background: "rgba(201,123,74,0.25)", color: "#FBC79B", border: "1px solid rgba(201,123,74,0.4)" }
+                    : { alignSelf: "start" }}>
+                    {s.tag}
+                  </div>
+                </div>
               </div>
+
+              <div style={{ padding: 28, display: "flex", flexDirection: "column", gap: 16, flex: 1 }}>
 
               <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 32, letterSpacing: "-0.02em", lineHeight: 1.05 }}>
                 {s.title}
@@ -982,6 +1055,7 @@ function Services() {
               <a href="#calc" className={s.accent ? "btn btn-primary" : "btn btn-ghost"} style={{ alignSelf: "start" }}>
                 {s.cta} <Icon name="arrow-right" size={16}/>
               </a>
+              </div>
             </div>
           ))}
         </div>
@@ -1293,8 +1367,17 @@ function ContactBlock({ icon, title, value }) {
 
 function FinalCTA() {
   return (
-    <section id="callback" className="section" style={{ background: "var(--ink)", color: "#fff", padding: "120px 64px" }}>
-      <div className="wrap" style={{ textAlign: "center", maxWidth: 920, margin: "0 auto" }}>
+    <section id="callback" className="section" style={{ position: "relative", color: "#fff", padding: "120px 64px", overflow: "hidden" }}>
+      {/* Background photo */}
+      <img src={IMG.ikos} alt="" aria-hidden="true" loading="lazy" style={{
+        position: "absolute", inset: 0, width: "100%", height: "100%",
+        objectFit: "cover", display: "block",
+      }}/>
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(135deg, rgba(42,38,34,0.94) 0%, rgba(42,38,34,0.85) 100%)",
+      }}/>
+      <div className="wrap" style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 920, margin: "0 auto" }}>
         <div className="eyebrow" style={{ color: "var(--terra)" }}>Следующий шаг</div>
         <h2 className="h-display" style={{
           fontSize: "clamp(40px, 5vw, 76px)",
@@ -1460,6 +1543,7 @@ function App() {
     <div className="page">
       <Header/>
       <Hero/>
+      <PhotoStrip/>
       <Portfolio/>
       <WhomFor/>
       <Services/>
