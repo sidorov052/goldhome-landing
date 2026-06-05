@@ -1,0 +1,1906 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Goldhome — Дома из СИП-панелей под ключ. Тюмень + Краснодар</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Goldhome — производитель СИП-панелей и строительство домов под ключ. Тюмень + Краснодар. Более 400 построенных домов, гарантия 25 лет.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+/* ---- Goldhome Landing — Design System ---- */
+:root {
+  --bg: #F5F1EA;
+  --bg-soft: #EEE7DA;
+  --surface: #FFFFFF;
+  --ink: #2A2622;
+  --ink-2: #5A524A;
+  --ink-3: #8C8378;
+  --line: #E2D8C5;
+  --terra: #C97B4A;
+  --terra-dark: #A85F32;
+  --terra-soft: #F2DCC8;
+  --walnut: #8B6F47;
+  --green: #4E6B3F;
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 28px;
+  --shadow-sm: 0 2px 4px rgba(42,38,34,.04), 0 8px 24px -12px rgba(42,38,34,.08);
+  --shadow: 0 4px 12px rgba(42,38,34,.06), 0 24px 48px -24px rgba(42,38,34,.18);
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Unbounded', 'Manrope', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, select, textarea { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* Layout */
+.page { width: 100%; overflow: hidden; }
+.section { padding: 100px 64px; }
+.wrap { max-width: 1320px; margin: 0 auto; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--terra);
+}
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0;
+}
+.h1 { font-size: clamp(40px, 4.6vw, 68px); }
+.h2 { font-size: clamp(32px, 3.4vw, 50px); }
+.h3 { font-size: clamp(22px, 1.8vw, 28px); }
+.lead { font-size: 20px; line-height: 1.5; color: var(--ink-2); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 56px; padding: 0 28px; border-radius: 999px;
+  font-weight: 600; font-size: 16px; letter-spacing: -0.005em;
+  transition: transform .15s ease, background .15s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--terra); color: #fff; box-shadow: 0 6px 18px -6px rgba(201,123,74,.6); }
+.btn-primary:hover { background: var(--terra-dark); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn-ghost:hover { background: var(--bg-soft); border-color: var(--ink-3); }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: #1A1614; }
+.btn-sm { height: 44px; padding: 0 18px; font-size: 14px; }
+.btn-lg { height: 64px; padding: 0 36px; font-size: 17px; }
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  padding: 28px;
+}
+.card-soft {
+  background: var(--bg-soft);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+/* Image placeholder — striped */
+.ph {
+  position: relative;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(135deg,
+      #EBE0CC 0 12px,
+      #E4D6BD 12px 24px);
+  color: var(--walnut);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+}
+.ph-label {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.04em;
+  background: rgba(255,255,255,.86);
+  padding: 6px 10px; border-radius: 6px;
+  color: var(--walnut);
+}
+.ph-dark {
+  background:
+    repeating-linear-gradient(135deg,
+      #3a342d 0 12px,
+      #2f2922 12px 24px);
+  color: #e8d9b8;
+}
+.ph-dark .ph-label { background: rgba(0,0,0,.55); color: #f0e2c4; }
+
+/* Tag/Chip */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 999px;
+  background: var(--bg-soft); color: var(--ink-2);
+  font-size: 13px; font-weight: 500;
+  border: 1px solid var(--line);
+}
+.chip-terra { background: #FBEDDF; color: var(--terra-dark); border-color: #F2DCC8; }
+.chip-dark  { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* Divider */
+.hr { height: 1px; background: var(--line); margin: 0; border: 0; }
+
+/* Numeric */
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 500; }
+
+/* Mobile preview frame */
+.phone {
+  width: 360px;
+  border-radius: 44px;
+  background: var(--ink);
+  padding: 12px;
+  box-shadow: 0 30px 80px -30px rgba(42,38,34,.4), 0 6px 12px rgba(42,38,34,.1);
+}
+.phone-screen {
+  border-radius: 32px;
+  background: var(--bg);
+  overflow: hidden;
+  height: 720px;
+}
+
+/* Star icon color */
+.star { color: #E0A53D; }
+
+/* Utility */
+.hide { display: none !important; }
+.flex { display: flex; }
+.grid { display: grid; }
+
+/* Focus */
+:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; border-radius: 6px; }
+
+/* Sticky header */
+.sticky-spacer { height: 88px; }
+
+/* Range input track styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--line);
+  border-radius: 99px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--terra);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(201,123,74,.4);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--terra);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(201,123,74,.4);
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+/* ============================================================
+   PRIMITIVES — icons, placeholders, ratings
+   ============================================================ */
+
+function Icon({ name, size = 20, stroke = 1.6 }) {
+  const s = size;
+  const common = {
+    width: s, height: s, viewBox: "0 0 24 24", fill: "none",
+    stroke: "currentColor", strokeWidth: stroke, strokeLinecap: "round", strokeLinejoin: "round",
+  };
+  switch (name) {
+    case "arrow-right": return <svg {...common}><path d="M5 12h14M13 5l7 7-7 7"/></svg>;
+    case "phone": return <svg {...common}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>;
+    case "menu": return <svg {...common}><path d="M3 6h18M3 12h18M3 18h18"/></svg>;
+    case "check": return <svg {...common}><path d="M4 12l5 5L20 6"/></svg>;
+    case "plus": return <svg {...common}><path d="M12 5v14M5 12h14"/></svg>;
+    case "minus": return <svg {...common}><path d="M5 12h14"/></svg>;
+    case "shield": return <svg {...common}><path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg>;
+    case "factory": return <svg {...common}><path d="M3 21V10l6 4V10l6 4V5l6 16H3z"/><path d="M9 17h1M13 17h1M17 17h1"/></svg>;
+    case "truck": return <svg {...common}><path d="M1 7h12v10H1zM13 10h5l3 3v4h-8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="17.5" cy="18.5" r="2.5"/></svg>;
+    case "leaf": return <svg {...common}><path d="M11 20A7 7 0 0 1 4 13a7 7 0 0 1 7-7c5 0 9 4 9 9-1 5-7 7-9 5z"/><path d="M5 19c4-4 7-6 14-7"/></svg>;
+    case "wallet": return <svg {...common}><path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H3z"/><path d="M3 7V5a2 2 0 0 1 2-2h11"/><circle cx="17" cy="14" r="1.5"/></svg>;
+    case "ruler": return <svg {...common}><path d="M3 8l13-5 5 13L8 21z"/><path d="M7 9l1.5 1.5M10 8l1.5 1.5M13 7l1.5 1.5M16 6l1.5 1.5"/></svg>;
+    case "home": return <svg {...common}><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2v-9z"/></svg>;
+    case "users": return <svg {...common}><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>;
+    case "tree": return <svg {...common}><path d="M12 2L7 9h3l-4 6h4l-3 5h10l-3-5h4l-4-6h3z"/><path d="M12 20v2"/></svg>;
+    case "play": return <svg {...common}><polygon points="6 4 20 12 6 20 6 4" fill="currentColor" stroke="none"/></svg>;
+    case "chevron-down": return <svg {...common}><path d="M6 9l6 6 6-6"/></svg>;
+    case "chevron-up": return <svg {...common}><path d="M18 15l-6-6-6 6"/></svg>;
+    case "chevron-right": return <svg {...common}><path d="M9 18l6-6-6-6"/></svg>;
+    case "chevron-left": return <svg {...common}><path d="M15 18l-6-6 6-6"/></svg>;
+    case "star": return <svg {...common} fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>;
+    case "mail": return <svg {...common}><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>;
+    case "map": return <svg {...common}><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>;
+    case "clock": return <svg {...common}><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>;
+    case "warehouse": return <svg {...common}><path d="M3 9l9-5 9 5v12H3z"/><path d="M7 21v-8h10v8M7 17h10"/></svg>;
+    case "flame": return <svg {...common}><path d="M12 2s4 4 4 9a4 4 0 0 1-8 0c0-3 2-5 2-7-2 1-6 4-6 9a8 8 0 0 0 16 0c0-6-6-10-8-11z"/></svg>;
+    case "thermo": return <svg {...common}><path d="M14 4v10.5a3.5 3.5 0 1 1-4 0V4a2 2 0 0 1 4 0z"/></svg>;
+    case "spark": return <svg {...common}><path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M19 5l-4 4M9 15l-4 4"/></svg>;
+    default: return null;
+  }
+}
+
+function Stars({ value = 5, size = 14 }) {
+  return (
+    <span className="flex" style={{ gap: 2, color: "#E0A53D" }}>
+      {[...Array(5)].map((_, i) => <Icon key={i} name="star" size={size} />)}
+    </span>
+  );
+}
+
+function Photo({ src, alt = "", h = 320, style = {}, objectPosition = "center" }) {
+  return (
+    <div style={{
+      position: "relative", height: h, borderRadius: 18, overflow: "hidden",
+      background: "var(--bg-soft)", ...style
+    }}>
+      <img src={src} alt={alt} loading="lazy" style={{
+        width: "100%", height: "100%", objectFit: "cover",
+        objectPosition, display: "block"
+      }}/>
+    </div>
+  );
+}
+
+function RatingPill({ logo, name, value, color }) {
+  return (
+    <div style={{
+      display: "flex", alignItems: "center", gap: 12,
+      background: "#fff", border: "1px solid var(--line)",
+      borderRadius: 14, padding: "10px 14px",
+      minWidth: 0, flex: "1 1 0"
+    }}>
+      <div style={{
+        width: 36, height: 36, borderRadius: 10,
+        background: color || "var(--bg-soft)",
+        color: "#fff", display: "flex", alignItems: "center", justifyContent: "center",
+        fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 14, flexShrink: 0
+      }}>{logo}</div>
+      <div style={{ minWidth: 0 }}>
+        <div style={{ fontSize: 12, color: "var(--ink-3)", fontWeight: 500 }}>{name}</div>
+        <div className="flex" style={{ alignItems: "center", gap: 6 }}>
+          <span className="num" style={{ fontWeight: 600, fontSize: 15 }}>{value}</span>
+          <Stars size={11}/>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const GH = "https://goldhome.life";
+const IMG = {
+  hero:         GH + "/img/house-sip.png",
+  houseSip:     GH + "/img/house-sip.png",
+  houseStone:   GH + "/img/house-stone.png",
+  houseFrame:   GH + "/img/house-frame.png",
+  houseWood:    GH + "/img/house-wood.jpg",
+  ikos:         GH + "/uploads/houses/1775751605152-572673618.png",
+  oykia:        GH + "/uploads/houses/1775751299742-887128857.png",
+  amaltea:      GH + "/uploads/houses/1775751083263-334411630.png",
+};
+
+/* ============================================================
+   CALCULATOR COMPONENTS (shared)
+   ============================================================ */
+
+const iconBtnStyle = {
+  width: 44, height: 44, borderRadius: 999,
+  border: "1.5px solid var(--line)", background: "var(--bg)",
+  display: "flex", alignItems: "center", justifyContent: "center",
+};
+
+const miniBtn = {
+  width: 32, height: 32, borderRadius: 999,
+  border: "1.5px solid var(--line)", background: "var(--bg)",
+  display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+};
+
+function SegControl({ value, onChange, options }) {
+  return (
+    <div style={{
+      display: "grid",
+      gridTemplateColumns: `repeat(${options.length}, 1fr)`,
+      gap: 4, background: "var(--bg)", borderRadius: 14, padding: 4,
+      border: "1.5px solid var(--line)",
+    }}>
+      {options.map(o => (
+        <button key={o.v} onClick={() => onChange(o.v)}
+          style={{
+            height: 46, borderRadius: 10,
+            background: value === o.v ? "var(--ink)" : "transparent",
+            color: value === o.v ? "#fff" : "var(--ink-2)",
+            fontWeight: 500, fontSize: 14,
+            transition: "all .15s ease",
+          }}>
+          {o.l}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function CheckRow({ checked, onChange, label, tight }) {
+  return (
+    <button onClick={() => onChange(!checked)} style={{
+      display: "flex", alignItems: "center", gap: 12,
+      padding: tight ? "0 16px" : "12px 14px",
+      height: tight ? 56 : "auto",
+      borderRadius: 12,
+      background: checked ? "rgba(201,123,74,0.08)" : "var(--bg)",
+      border: checked ? "1.5px solid var(--terra)" : "1.5px solid var(--line)",
+      textAlign: "left", lineHeight: 1.3, fontSize: 13, color: "var(--ink)",
+      transition: "all .15s ease"
+    }}>
+      <span style={{
+        width: 20, height: 20, borderRadius: 6, flexShrink: 0,
+        background: checked ? "var(--terra)" : "#fff",
+        border: checked ? "none" : "1.5px solid var(--line)",
+        display: "flex", alignItems: "center", justifyContent: "center", color: "#fff",
+      }}>
+        {checked && <Icon name="check" size={13} stroke={2.5}/>}
+      </span>
+      <span style={{ fontWeight: 500 }}>{label}</span>
+    </button>
+  );
+}
+
+function ChipToggle({ active, onClick, children }) {
+  return (
+    <button onClick={onClick} style={{
+      padding: "8px 14px", borderRadius: 999, fontSize: 13, fontWeight: 500,
+      background: active ? "var(--ink)" : "#fff",
+      color: active ? "#fff" : "var(--ink-2)",
+      border: active ? "1.5px solid var(--ink)" : "1.5px solid var(--line)",
+      transition: "all .15s ease",
+      display: "inline-flex", alignItems: "center", gap: 6,
+    }}>
+      {active && <Icon name="check" size={12} stroke={3}/>}
+      {children}
+    </button>
+  );
+}
+
+function CompactField({ label, hint, children }) {
+  return (
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 8 }}>
+        <div style={{ fontWeight: 600, fontSize: 13, color: "var(--ink)" }}>{label}</div>
+        {hint && <div className="num" style={{ fontSize: 12, color: "var(--terra)", fontWeight: 600 }}>{hint}</div>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function PriceRow({ label, value }) {
+  return (
+    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
+      <span style={{ color: "var(--ink-2)" }}>{label}</span>
+      <span className="num" style={{ fontWeight: 600, color: "var(--ink)" }}>{value}</span>
+    </div>
+  );
+}
+
+/* ============================================================
+   HERO CALCULATOR (compact, right column)
+   ============================================================ */
+
+function HeroCalculator() {
+  const [area, setArea] = React.useState(85);
+  const [type, setType] = React.useState("sip");
+  const [floors, setFloors] = React.useState("1");
+  const [extras, setExtras] = React.useState({ foundation: true, eng: false, finish: false, mortgage: false });
+  const [phone, setPhone] = React.useState("");
+
+  const base = { sip: 14000, frame: 18000, combo: 22000 }[type];
+  const floorMult = { "1": 1, "2": 1.25, "mansard": 1.12 }[floors];
+  const extraSum = (extras.foundation ? 280000 : 0)
+                 + (extras.eng ? 420000 : 0)
+                 + (extras.finish ? 540000 : 0);
+  const price = Math.round((area * base * floorMult + extraSum) / 1000) * 1000;
+  const fmt = (n) => n.toLocaleString("ru-RU").replace(/,/g, " ");
+
+  return (
+    <div id="calc" style={{
+      background: "#fff", borderRadius: 28, padding: 28,
+      boxShadow: "var(--shadow)", border: "1px solid var(--line)",
+      display: "flex", flexDirection: "column",
+    }}>
+      {/* Header: title + live price */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", marginBottom: 20, gap: 16 }}>
+        <div>
+          <div className="eyebrow" style={{ marginBottom: 4 }}>Калькулятор · бесплатно</div>
+          <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 22, letterSpacing: "-0.01em", lineHeight: 1.15 }}>
+            Узнайте стоимость<br/>дома за 15 минут
+          </div>
+        </div>
+        <div style={{ textAlign: "right", flexShrink: 0 }}>
+          <div style={{ fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+            примерно
+          </div>
+          <div className="num" style={{
+            fontFamily: "var(--font-display)", fontWeight: 500,
+            fontSize: 26, color: "var(--terra)", marginTop: 2,
+            fontVariantNumeric: "tabular-nums", letterSpacing: "-0.01em"
+          }}>
+            от {fmt(price)} ₽
+          </div>
+        </div>
+      </div>
+
+      {/* Area slider */}
+      <CompactField label="Площадь дома" hint={`${area} м²`}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <button onClick={() => setArea(Math.max(20, area - 5))} style={miniBtn}>
+            <Icon name="minus" size={14}/>
+          </button>
+          <input
+            type="range" min={20} max={250} step={5} value={area}
+            onChange={(e) => setArea(+e.target.value)}
+            style={{ flex: 1 }}
+          />
+          <button onClick={() => setArea(Math.min(250, area + 5))} style={miniBtn}>
+            <Icon name="plus" size={14}/>
+          </button>
+        </div>
+        <div style={{
+          display: "flex", justifyContent: "space-between",
+          fontSize: 10, color: "var(--ink-3)", fontFamily: "var(--font-mono)",
+          marginTop: 6, padding: "0 30px"
+        }}>
+          <span>20</span><span>250 м²</span>
+        </div>
+      </CompactField>
+
+      {/* Type */}
+      <CompactField label="Технология">
+        <SegControl
+          value={type} onChange={setType}
+          options={[
+            { v: "sip", l: "СИП" },
+            { v: "frame", l: "Каркас" },
+            { v: "combo", l: "Комбо" },
+          ]}
+        />
+      </CompactField>
+
+      {/* Floors */}
+      <CompactField label="Этажность">
+        <SegControl
+          value={floors} onChange={setFloors}
+          options={[
+            { v: "1", l: "1 этаж" },
+            { v: "2", l: "2 этажа" },
+            { v: "mansard", l: "Мансарда" },
+          ]}
+        />
+      </CompactField>
+
+      {/* Extras */}
+      <CompactField label="Включить в расчёт">
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+          {[
+            ["foundation", "Фундамент"],
+            ["eng", "Инженерия"],
+            ["finish", "Отделка"],
+            ["mortgage", "Ипотека"],
+          ].map(([k, l]) => (
+            <ChipToggle key={k}
+              active={extras[k]}
+              onClick={() => setExtras({...extras, [k]: !extras[k]})}>
+              {l}
+            </ChipToggle>
+          ))}
+        </div>
+      </CompactField>
+
+      {/* Phone */}
+      <input
+        type="tel"
+        placeholder="+7 ___ ___ __ __"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        style={{
+          height: 52, borderRadius: 12, padding: "0 18px",
+          border: "1.5px solid var(--line)", background: "var(--bg)",
+          fontSize: 15, fontFamily: "var(--font-mono)", color: "var(--ink)",
+          outline: "none", marginTop: 4,
+        }}
+      />
+
+      <button className="btn btn-primary" style={{ width: "100%", marginTop: 12, height: 56 }}>
+        Получить расчёт <Icon name="arrow-right" size={16}/>
+      </button>
+      <div style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 10, textAlign: "center", lineHeight: 1.4 }}>
+        Без обязательств. Расчёт на WhatsApp за 15 минут.
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+function Header() {
+  return (
+    <header style={{
+      position: "sticky", top: 0, zIndex: 50,
+      background: "rgba(245,241,234,0.85)",
+      backdropFilter: "blur(16px)",
+      WebkitBackdropFilter: "blur(16px)",
+      borderBottom: "1px solid var(--line)",
+    }}>
+      <div style={{
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        height: 88, padding: "0 64px",
+        maxWidth: 1320, margin: "0 auto",
+      }}>
+        {/* Logo */}
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{
+            width: 44, height: 44, borderRadius: 12,
+            background: "var(--ink)", color: "var(--terra)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 22,
+          }}>G</div>
+          <div>
+            <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 20, letterSpacing: "-0.02em" }}>
+              Goldhome
+            </div>
+            <div style={{ fontSize: 11, color: "var(--ink-3)", marginTop: 2 }}>
+              Дома из СИП-панелей · Тюмень + Краснодар
+            </div>
+          </div>
+        </div>
+
+        {/* Nav */}
+        <nav style={{ display: "flex", gap: 28, fontSize: 14, fontWeight: 500, color: "var(--ink-2)" }}>
+          <a href="#projects">Проекты</a>
+          <a href="#calc">Калькулятор</a>
+          <a href="#services">Услуги</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+
+        {/* Right */}
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <div style={{ textAlign: "right" }}>
+            <div className="num" style={{ fontWeight: 600, fontSize: 16, color: "var(--ink)" }}>
+              +7 927 328 95 37
+            </div>
+            <div style={{ fontSize: 11, color: "var(--ink-3)", display: "flex", alignItems: "center", gap: 4, justifyContent: "flex-end", marginTop: 2 }}>
+              <Icon name="clock" size={11}/> Ежедневно 9:00–21:00 ·{" "}
+              <a href="#callback" style={{ color: "var(--terra)" }}>Заказать звонок</a>
+            </div>
+          </div>
+          <button className="btn btn-primary btn-sm">
+            Рассчитать стоимость
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+function MiniStat({ value, label }) {
+  return (
+    <div>
+      <div style={{
+        fontFamily: "var(--font-display)", fontWeight: 500,
+        fontSize: 28, lineHeight: 1, letterSpacing: "-0.02em",
+        color: "var(--ink)", marginBottom: 6
+      }}>{value}</div>
+      <div style={{ fontSize: 12, color: "var(--ink-3)", lineHeight: 1.4, maxWidth: 130 }}>
+        {label}
+      </div>
+    </div>
+  );
+}
+
+function UspCard({ icon, title, body, accent }) {
+  return (
+    <div style={{
+      background: accent ? "var(--ink)" : "#fff",
+      color: accent ? "#fff" : "var(--ink)",
+      border: accent ? "1px solid var(--ink)" : "1px solid var(--line)",
+      borderRadius: 18, padding: "20px 18px",
+    }}>
+      <div style={{
+        width: 36, height: 36, borderRadius: 10,
+        background: accent ? "rgba(201,123,74,0.18)" : "var(--bg-soft)",
+        color: "var(--terra)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        marginBottom: 14
+      }}>
+        <Icon name={icon} size={20}/>
+      </div>
+      <div style={{ fontWeight: 600, fontSize: 16, marginBottom: 6 }}>{title}</div>
+      <div style={{ fontSize: 13, color: accent ? "rgba(255,255,255,0.7)" : "var(--ink-2)", lineHeight: 1.45 }}>
+        {body}
+      </div>
+    </div>
+  );
+}
+
+function Hero() {
+  return (
+    <section style={{ padding: "56px 64px 80px" }}>
+      <div className="wrap" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56, alignItems: "start" }}>
+
+        {/* LEFT */}
+        <div>
+          <div className="eyebrow">Собственное производство · Тюмень + Краснодар</div>
+
+          <h1 className="h-display h1" style={{ marginTop: 18, marginBottom: 24 }}>
+            Дом из СИП-панелей под ключ с выгодой до{" "}
+            <span style={{ color: "var(--terra)", whiteSpace: "nowrap" }}>600 000 ₽</span>{" "}
+            за счёт собственного производства
+          </h1>
+
+          <p className="lead" style={{ maxWidth: 560, marginBottom: 28 }}>
+            Производим панели на своих заводах в Тюмени и Краснодаре. Коробку собираем за 1–2 недели, под ключ — за 2–3 месяца. Подключаем ипотеку и маткапитал.
+          </p>
+
+          {/* Mini stats */}
+          <div style={{
+            display: "flex", gap: 32, marginBottom: 36, paddingTop: 24,
+            borderTop: "1px solid var(--line)"
+          }}>
+            <MiniStat value="412" label="построено домов"/>
+            <MiniStat value="30+" label="регионов от ЯНАО до Сочи"/>
+            <MiniStat value="25" label="лет гарантии"/>
+          </div>
+
+          {/* USP cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+            <UspCard
+              icon="shield"
+              title="Гарантия 25 лет"
+              body="Стоимость, сроки и штраф 0,1% за день просрочки — прямо в договоре."
+            />
+            <UspCard
+              icon="factory"
+              title="Цены от производителя"
+              body="Не перекупщики. Своё производство — экономия до 30% против посредников."
+              accent
+            />
+            <UspCard
+              icon="ruler"
+              title="Эскизный проект за 5 000 ₽"
+              body="Вместо 25 000 ₽. До конца месяца. При заказе строительства — раздел КР бесплатно."
+            />
+          </div>
+        </div>
+
+        {/* RIGHT — Calculator */}
+        <div style={{ position: "sticky", top: 110 }}>
+          <HeroCalculator/>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   PORTFOLIO
+   ============================================================ */
+
+const PROJECTS = {
+  turnkey: [
+    { name: "Икос",     m: 142, beds: 3, img: () => IMG.ikos },
+    { name: "Ойкиа",    m: 60,  beds: 2, img: () => IMG.oykia },
+    { name: "Амальтея", m: 70,  beds: 2, img: () => IMG.amaltea },
+    { name: "Хавен",    m: 20,  beds: 1, img: () => IMG.houseSip },
+    { name: "Ретрит",   m: 24,  beds: 1, img: () => IMG.houseFrame },
+    { name: "Хопс",     m: 159, beds: 3, img: () => IMG.houseWood },
+  ],
+  kits: [
+    { name: "Дом-комплект «Север»",   m: 85,  beds: 2, img: () => IMG.houseSip },
+    { name: "Дом-комплект «Юг»",      m: 60,  beds: 2, img: () => IMG.oykia },
+    { name: "Дом-комплект «Базовый»", m: 100, beds: 3, img: () => IMG.amaltea },
+    { name: "Дом-комплект «Лофт»",    m: 50,  beds: 1, img: () => IMG.houseFrame },
+    { name: "Дом-комплект «Семья»",   m: 130, beds: 4, img: () => IMG.ikos },
+    { name: "Дом-комплект «Дача»",    m: 36,  beds: 1, img: () => IMG.houseWood },
+  ],
+  stone: [
+    { name: "Камень «Атлас»",    m: 180, beds: 4, img: () => IMG.houseStone },
+    { name: "Камень «Гранит»",   m: 220, beds: 5, img: () => IMG.houseStone },
+    { name: "Камень «Эрмитаж»",  m: 150, beds: 3, img: () => IMG.houseStone },
+    { name: "Камень «Терция»",   m: 130, beds: 3, img: () => IMG.houseStone },
+    { name: "Камень «Этюд»",     m: 110, beds: 3, img: () => IMG.houseStone },
+    { name: "Камень «Тоскана»",  m: 200, beds: 4, img: () => IMG.houseStone },
+  ],
+};
+
+function Portfolio() {
+  const [tab, setTab] = React.useState("turnkey");
+
+  return (
+    <section id="projects" className="section">
+      <div className="wrap">
+        <div style={{ display: "flex", alignItems: "end", justifyContent: "space-between", marginBottom: 36, gap: 32, flexWrap: "wrap" }}>
+          <div>
+            <div className="eyebrow">Портфолио</div>
+            <h2 className="h-display h2" style={{ marginTop: 14, marginBottom: 14 }}>
+              Более 400 построенных домов <br/>
+              со средним рейтингом <span style={{ color: "var(--terra)" }}>4.9 / 5</span>
+            </h2>
+          </div>
+
+          {/* Tabs */}
+          <div style={{
+            display: "flex", gap: 4, padding: 4,
+            background: "var(--bg-soft)", borderRadius: 999,
+            border: "1px solid var(--line)",
+          }}>
+            {[
+              ["turnkey", "Под ключ"],
+              ["kits", "Домокомплекты"],
+              ["stone", "Каменные дома"],
+            ].map(([k, l]) => (
+              <button key={k} onClick={() => setTab(k)}
+                style={{
+                  height: 44, padding: "0 22px", borderRadius: 999,
+                  background: tab === k ? "var(--ink)" : "transparent",
+                  color: tab === k ? "#fff" : "var(--ink-2)",
+                  fontWeight: 500, fontSize: 14,
+                  transition: "all .15s ease",
+                }}>{l}</button>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+          {PROJECTS[tab].map((p) => (
+            <div key={p.name} style={{
+              background: "#fff", borderRadius: 22, overflow: "hidden",
+              border: "1px solid var(--line)", display: "flex", flexDirection: "column",
+            }}>
+              <div style={{ position: "relative" }}>
+                <Photo src={p.img()} alt={`${p.name}, ${p.m} м²`} h={240} style={{ borderRadius: 0 }}/>
+                <div style={{ position: "absolute", top: 14, left: 14, display: "flex", gap: 6 }}>
+                  <span className="chip" style={{ background: "rgba(255,255,255,0.94)" }}>
+                    <span className="num">{p.m}</span> м²
+                  </span>
+                  <span className="chip" style={{ background: "rgba(255,255,255,0.94)" }}>
+                    {p.beds} спальни
+                  </span>
+                </div>
+              </div>
+              <div style={{ padding: "20px 22px 22px", display: "flex", flexDirection: "column", gap: 14, flex: 1 }}>
+                <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 22, letterSpacing: "-0.01em" }}>
+                  {p.name}
+                </div>
+                <div style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5 }}>
+                  Цена зависит от ваших параметров: фундамент, отделка, инженерия. Рассчитаем под вас за 15 минут.
+                </div>
+                <a href="#calc" className="btn btn-ghost btn-sm" style={{ marginTop: "auto", alignSelf: "stretch" }}>
+                  Рассчитать по своим параметрам <Icon name="arrow-right" size={14}/>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   WHOM FOR
+   ============================================================ */
+
+function WhomFor() {
+  const items = [
+    {
+      icon: "home", num: "01",
+      title: "Хотите свой дом, но не готовы ждать 2 года",
+      body: "Кирпич — это 1,5 года стройки и кредит на 20 лет. СИП — переедете до Нового года, если решите сейчас."
+    },
+    {
+      icon: "wallet", num: "02",
+      title: "Используете маткапитал на дом, а не на квартиру",
+      body: "484 000 ₽ маткапитала — до 25% стоимости готового домокомплекта. Помогаем с оформлением документов."
+    },
+    {
+      icon: "tree", num: "03",
+      title: "Устали от соседей за стеной и шума двора",
+      body: "Свой участок, своя тишина, свой воздух. Без панелек, лифтов и протечек сверху от соседей."
+    },
+  ];
+
+  return (
+    <section className="section" style={{ background: "var(--bg-soft)" }}>
+      <div className="wrap">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 64, marginBottom: 48, alignItems: "end" }}>
+          <div>
+            <div className="eyebrow">Кому подойдёт</div>
+            <h2 className="h-display h2" style={{ marginTop: 14 }}>
+              СИП-дом — это про вас, если…
+            </h2>
+          </div>
+          <p className="lead" style={{ maxWidth: 540 }}>
+            Мы построили 412 домов и знаем главное: люди приходят к нам по похожим причинам. Узнайте себя в одной из трёх.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
+          {items.map((it) => (
+            <div key={it.num} style={{
+              background: "#fff", borderRadius: 22, padding: 28,
+              border: "1px solid var(--line)",
+              display: "flex", flexDirection: "column", gap: 18, minHeight: 280,
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
+                <div style={{
+                  width: 56, height: 56, borderRadius: 16,
+                  background: "var(--bg-soft)", color: "var(--terra)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <Icon name={it.icon} size={26}/>
+                </div>
+                <div className="num" style={{ fontSize: 14, color: "var(--ink-3)" }}>{it.num} / 03</div>
+              </div>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 22, lineHeight: 1.15, letterSpacing: "-0.01em" }}>
+                {it.title}
+              </div>
+              <div style={{ fontSize: 15, color: "var(--ink-2)", lineHeight: 1.5 }}>
+                {it.body}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+
+function Services() {
+  const items = [
+    {
+      tag: "Сделай сам",
+      title: "Домокомплект",
+      price: "от 14 000 ₽/м²",
+      body: "Привезём готовый набор панелей на ваш участок. Соберёте сами или с нашей бригадой. Производство 10–15 дней.",
+      cta: "Подобрать комплект",
+      accent: false,
+    },
+    {
+      tag: "Главное предложение",
+      title: "Дом под ключ",
+      price: "от 31 000 ₽/м²",
+      body: "Всё включено: проект, фундамент, коробка, отделка, инженерия. Вы получаете ключи. От 2 до 4 месяцев.",
+      cta: "Рассчитать под ключ",
+      accent: true,
+    },
+    {
+      tag: "Оптом",
+      title: "СИП-панели оптом",
+      price: "от 4 532 ₽/шт",
+      body: "Для дилеров, бригад, частной стройки. Производство Тюмень + Краснодар. Доставка от 10 м³ по России.",
+      cta: "Запросить прайс",
+      accent: false,
+    },
+  ];
+
+  return (
+    <section id="services" className="section">
+      <div className="wrap">
+        <div className="eyebrow">Услуги</div>
+        <h2 className="h-display h2" style={{ marginTop: 14, marginBottom: 48, maxWidth: 780 }}>
+          Три способа получить дом мечты — от готового комплекта до ключей в руках
+        </h2>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr 1fr", gap: 20 }}>
+          {items.map((s) => (
+            <div key={s.title} style={{
+              background: s.accent ? "var(--ink)" : "#fff",
+              color: s.accent ? "#fff" : "var(--ink)",
+              border: s.accent ? "1px solid var(--ink)" : "1px solid var(--line)",
+              borderRadius: 24, padding: 32,
+              display: "flex", flexDirection: "column", gap: 20,
+              minHeight: 440, position: "relative", overflow: "hidden",
+            }}>
+              {s.accent && (
+                <div style={{
+                  position: "absolute", top: 0, right: 0,
+                  width: 180, height: 180, borderRadius: "50%",
+                  background: "radial-gradient(circle, rgba(201,123,74,0.5), transparent 70%)",
+                  transform: "translate(40%, -40%)",
+                  pointerEvents: "none"
+                }}/>
+              )}
+
+              <div className="chip" style={s.accent
+                ? { background: "rgba(201,123,74,0.18)", color: "#FBC79B", border: "1px solid rgba(201,123,74,0.35)", alignSelf: "start" }
+                : { alignSelf: "start" }}>
+                {s.tag}
+              </div>
+
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 32, letterSpacing: "-0.02em", lineHeight: 1.05 }}>
+                {s.title}
+              </div>
+
+              <div className="num" style={{
+                fontSize: 22, fontWeight: 600,
+                color: s.accent ? "#FBC79B" : "var(--terra)",
+              }}>
+                {s.price}
+              </div>
+
+              <div style={{ fontSize: 15, lineHeight: 1.5, color: s.accent ? "rgba(255,255,255,0.75)" : "var(--ink-2)", flex: 1 }}>
+                {s.body}
+              </div>
+
+              <a href="#calc" className={s.accent ? "btn btn-primary" : "btn btn-ghost"} style={{ alignSelf: "start" }}>
+                {s.cta} <Icon name="arrow-right" size={16}/>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   REASONS (6 причин)
+   ============================================================ */
+
+function Reasons() {
+  const items = [
+    {
+      icon: "factory",
+      title: "Собственное производство — Тюмень + Краснодар",
+      body: "Не перекупщики. Производим панели на немецкой линии. Север и Юг — две базы для быстрой доставки в ваш регион.",
+    },
+    {
+      icon: "truck",
+      title: "Бригада приедет в ваш регион",
+      body: "Уже строили в ЯНАО, ХМАО, Сочи, Казани, Уфе. Привозим бытовку, организуем питание. Сдаём в срок.",
+    },
+    {
+      icon: "shield",
+      title: "Сейсмостойкость до 9 баллов",
+      body: "Конструкция выдерживает землетрясения. Технология сертифицирована для южных регионов и горной местности.",
+    },
+    {
+      icon: "thermo",
+      title: "Экономия на отоплении до 50%",
+      body: "Зимой газовый котёл работает на минимуме. Летом — не жарко. Реальные отзывы клиентов из ЯНАО подтверждают.",
+    },
+    {
+      icon: "wallet",
+      title: "Ипотека, маткапитал, рассрочка",
+      body: "Аккредитованы в 8 банках. Семейная, сельская, IT-ипотека. Маткапитал — в первый взнос.",
+    },
+    {
+      icon: "check",
+      title: "25 лет гарантии на конструкцию",
+      body: "Договор фиксирует обязательства. Если что-то не так — переделываем за свой счёт без вопросов.",
+    },
+  ];
+
+  return (
+    <section className="section">
+      <div className="wrap">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 64, alignItems: "start", marginBottom: 48 }}>
+          <div>
+            <div className="eyebrow">Почему Goldhome</div>
+            <h2 className="h-display h2" style={{ marginTop: 14 }}>
+              6 причин выбрать нас, а не соседа по объявлению
+            </h2>
+          </div>
+          <div style={{ display: "flex", gap: 24, alignSelf: "end", color: "var(--ink-2)", maxWidth: 540 }}>
+            <p>Мы 11 лет на рынке и видели всё: от подрядчиков-однодневок до клиентов, которые приезжают за вторым домом для родителей. Вот что нас отличает.</p>
+          </div>
+        </div>
+
+        <div style={{
+          display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
+          gap: 1, background: "var(--line)",
+          border: "1px solid var(--line)", borderRadius: 24, overflow: "hidden",
+        }}>
+          {items.map((it, i) => (
+            <div key={i} style={{
+              background: "#fff", padding: "36px 32px",
+              display: "flex", flexDirection: "column", gap: 16, minHeight: 240,
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                <div style={{
+                  width: 48, height: 48, borderRadius: 12,
+                  background: "var(--bg-soft)", color: "var(--terra)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <Icon name={it.icon} size={22}/>
+                </div>
+                <div className="num" style={{ fontSize: 13, color: "var(--ink-3)" }}>
+                  0{i + 1}
+                </div>
+              </div>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 19, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
+                {it.title}
+              </div>
+              <div style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5 }}>
+                {it.body}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   COMPARISON TABLE
+   ============================================================ */
+
+function Comparison() {
+  const rows = [
+    ["Срок коробки",        "1–2 недели",    "2–4 недели",  "2–4 месяца"],
+    ["Стоимость м²",        "от 14 000 ₽",  "от 18 000 ₽", "от 35 000 ₽"],
+    ["Теплопотери",         "минимальные",   "средние",     "высокие"],
+    ["Усадка дома",         "нет",           "минимальная", "до 1 года"],
+    ["Сейсмостойкость",     "до 9 баллов",   "до 7 баллов", "до 6 баллов"],
+    ["Строительство зимой", "да, при −35°C", "да",          "сложно"],
+  ];
+  const winners = [0, 0, 0, 0, 0, 0];
+
+  return (
+    <section className="section" style={{ background: "var(--ink)", color: "#fff" }}>
+      <div className="wrap">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, marginBottom: 48, alignItems: "end" }}>
+          <div>
+            <div className="eyebrow" style={{ color: "var(--terra)" }}>Сравнение технологий</div>
+            <h2 className="h-display h2" style={{ marginTop: 14, color: "#fff" }}>
+              Почему СИП, а не кирпич<br/>или каркас?
+            </h2>
+          </div>
+          <p style={{ fontSize: 18, color: "rgba(255,255,255,0.7)", lineHeight: 1.5, maxWidth: 480 }}>
+            СИП выигрывает по 5 из 6 параметров для частного строительства. Цифры — из открытых тендеров и наших объектов.
+          </p>
+        </div>
+
+        <div style={{
+          background: "rgba(255,255,255,0.04)",
+          border: "1px solid rgba(255,255,255,0.1)",
+          borderRadius: 24, overflow: "hidden",
+        }}>
+          {/* Header row */}
+          <div style={{
+            display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr",
+            padding: "20px 32px",
+            background: "rgba(255,255,255,0.04)",
+            borderBottom: "1px solid rgba(255,255,255,0.08)",
+            fontSize: 13, fontFamily: "var(--font-mono)", textTransform: "uppercase",
+            letterSpacing: "0.06em", color: "rgba(255,255,255,0.5)",
+          }}>
+            <div>Параметр</div>
+            <div style={{ color: "var(--terra)" }}>СИП</div>
+            <div>Каркас</div>
+            <div>Кирпич</div>
+          </div>
+          {rows.map((r, i) => (
+            <div key={i} style={{
+              display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr",
+              padding: "22px 32px",
+              borderBottom: i < rows.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
+              alignItems: "center", fontSize: 16,
+            }}>
+              <div style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}>{r[0]}</div>
+              {[r[1], r[2], r[3]].map((cell, ci) => (
+                <div key={ci} style={{
+                  fontWeight: winners[i] === ci ? 600 : 400,
+                  color: winners[i] === ci ? "#fff" : "rgba(255,255,255,0.55)",
+                  display: "flex", alignItems: "center", gap: 8
+                }}>
+                  {winners[i] === ci && (
+                    <span style={{
+                      width: 18, height: 18, borderRadius: 99,
+                      background: "var(--terra)", color: "#fff",
+                      display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0
+                    }}>
+                      <Icon name="check" size={11} stroke={3}/>
+                    </span>
+                  )}
+                  {cell}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   FAQ ACCORDION
+   ============================================================ */
+
+function FAQ() {
+  const items = [
+    {
+      q: "СИП-дом горит как спичка?",
+      a: "Нет. Пенополистирол ПСБ-С 25Ф самозатухающий, класс Г1. OSB-3 пропитан огнебиозащитой. Огонь не распространяется по конструкции, что подтверждено пожарными испытаниями."
+    },
+    {
+      q: "Мыши прогрызут стены?",
+      a: "Не доберутся при правильном фундаменте. Поднимаем дом на 40 см над землёй, делаем металлические отсечки. Мыши не строят гнёзда в пенополистироле — для них он бесполезен."
+    },
+    {
+      q: "Дом простоит 20–30 лет и развалится?",
+      a: "В Канаде такие дома стоят с 1950-х годов. Средний срок службы — 70–80 лет. Мы даём гарантию 25 лет на конструкцию по договору."
+    },
+    {
+      q: "Пенопласт токсичен, формальдегид?",
+      a: "Класс эмиссии E0 — самый низкий. Тот же ППС используется в холодильниках и упаковке для еды. Все материалы сертифицированы по ГОСТ."
+    },
+    {
+      q: "Будет слышно между этажами?",
+      a: "Да, это особенность лёгкой технологии. Мы решаем шумоизоляцией перекрытий: акустическая мембрана + минвата 200 мм. Входит в комплектацию «Стандарт»."
+    },
+    {
+      q: "А вдруг подрядчик кинет — недострой?",
+      a: "В договоре прописаны штрафы за просрочку 0,1% в день. Поэтапная оплата только по факту выполненных работ. На каждом этапе подписываем акт приёмки."
+    },
+    {
+      q: "Вы из Тюмени, а я в Краснодаре. Как строить будете?",
+      a: "У нас 2 собственных производства — в Тюмени и Краснодаре. Бригада штатная, не подряд. Уже строили в 30+ регионах. Привозим бытовку для бригады, организуем питание."
+    },
+  ];
+
+  const [open, setOpen] = React.useState(0);
+
+  return (
+    <section id="faq" className="section">
+      <div className="wrap">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "start" }}>
+          <div style={{ position: "sticky", top: 110 }}>
+            <div className="eyebrow">Часто спрашивают</div>
+            <h2 className="h-display h2" style={{ marginTop: 14, marginBottom: 18 }}>
+              Снимаем главные страхи о СИП-домах
+            </h2>
+            <p style={{ color: "var(--ink-2)", fontSize: 16, marginBottom: 24, lineHeight: 1.5 }}>
+              7 главных вопросов, которые задают перед заказом. Если вашего нет — напишите нам.
+            </p>
+            <button className="btn btn-ghost">
+              Задать свой вопрос <Icon name="arrow-right" size={16}/>
+            </button>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {items.map((it, i) => {
+              const isOpen = open === i;
+              return (
+                <div key={i} style={{
+                  background: "#fff", borderRadius: 18,
+                  border: isOpen ? "1.5px solid var(--terra)" : "1px solid var(--line)",
+                  overflow: "hidden", transition: "border .15s ease"
+                }}>
+                  <button
+                    onClick={() => setOpen(isOpen ? -1 : i)}
+                    style={{
+                      width: "100%", textAlign: "left",
+                      padding: "22px 26px",
+                      display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16
+                    }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+                      <span className="num" style={{ fontSize: 13, color: "var(--ink-3)", minWidth: 28 }}>
+                        0{i + 1}
+                      </span>
+                      <span style={{ fontWeight: 600, fontSize: 17, color: "var(--ink)" }}>
+                        {it.q}
+                      </span>
+                    </div>
+                    <span style={{
+                      width: 36, height: 36, borderRadius: 99,
+                      background: isOpen ? "var(--terra)" : "var(--bg-soft)",
+                      color: isOpen ? "#fff" : "var(--ink-2)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      flexShrink: 0, transition: "all .15s ease",
+                    }}>
+                      <Icon name={isOpen ? "minus" : "plus"} size={16} stroke={2}/>
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div style={{
+                      padding: "0 26px 22px 72px",
+                      fontSize: 15, color: "var(--ink-2)", lineHeight: 1.6
+                    }}>
+                      {it.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+
+function ContactBlock({ icon, title, value }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+      <div style={{
+        width: 48, height: 48, borderRadius: 14,
+        background: "rgba(201,123,74,0.18)", color: "var(--terra)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+      }}>
+        <Icon name={icon} size={20}/>
+      </div>
+      <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-mono)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+        {title}
+      </div>
+      <div className="num" style={{ fontSize: 18, color: "#fff", fontWeight: 500 }}>{value}</div>
+    </div>
+  );
+}
+
+function FinalCTA() {
+  return (
+    <section id="callback" className="section" style={{ background: "var(--ink)", color: "#fff", padding: "120px 64px" }}>
+      <div className="wrap" style={{ textAlign: "center", maxWidth: 920, margin: "0 auto" }}>
+        <div className="eyebrow" style={{ color: "var(--terra)" }}>Следующий шаг</div>
+        <h2 className="h-display" style={{
+          fontSize: "clamp(40px, 5vw, 76px)",
+          letterSpacing: "-0.025em",
+          color: "#fff",
+          margin: "20px 0 24px",
+          lineHeight: 1.02,
+        }}>
+          Готовы узнать стоимость<br/>
+          <span style={{ color: "var(--terra)" }}>именно вашего дома?</span>
+        </h2>
+        <p style={{ fontSize: 18, color: "rgba(255,255,255,0.7)", lineHeight: 1.55, marginBottom: 36, maxWidth: 680, margin: "0 auto 36px" }}>
+          Заполните калькулятор — через 15 минут пришлём 3 варианта расчёта (эконом / стандарт / премиум) на WhatsApp. Без обязательств и звонков без вашего разрешения.
+        </p>
+
+        <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 56, flexWrap: "wrap" }}>
+          <a href="#calc" className="btn btn-primary btn-lg">
+            Рассчитать стоимость <Icon name="arrow-right" size={18}/>
+          </a>
+          <button className="btn btn-lg" style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)" }}>
+            <Icon name="phone" size={16}/> Заказать звонок
+          </button>
+        </div>
+
+        <div style={{
+          display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16,
+          paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.08)",
+        }}>
+          <ContactBlock icon="phone" title="Тюмень" value="+7 927 328 95 37"/>
+          <ContactBlock icon="phone" title="Краснодар" value="+7 988 303 85 33"/>
+          <ContactBlock icon="mail" title="Почта" value="GH-Tmn@ya.ru"/>
+        </div>
+
+        <div style={{ marginTop: 32, display: "flex", justifyContent: "center", gap: 12, alignItems: "center" }}>
+          <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+            пишите в мессенджер →
+          </span>
+          {[
+            ["WA", "#25D366"],
+            ["TG", "#26A5E4"],
+            ["VK", "#0077FF"],
+            ["MAX", "#FF6B35"],
+          ].map(([l, c]) => (
+            <button key={l} style={{
+              width: 48, height: 48, borderRadius: 14,
+              background: c, color: "#fff",
+              fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 13,
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}>{l}</button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+function FooterCol({ title, links }) {
+  return (
+    <div>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>
+        {title}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {links.map(l => (
+          <a key={l} href="#" style={{ fontSize: 14, color: "rgba(255,255,255,0.75)" }}>{l}</a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Office({ city, addr, phone }) {
+  return (
+    <div style={{ marginBottom: 18 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+        <Icon name="map" size={14}/>
+        <span style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>{city}</span>
+      </div>
+      <div style={{ fontSize: 13, marginLeft: 22 }}>{addr}</div>
+      <div className="num" style={{ fontSize: 13, marginLeft: 22, color: "#fff" }}>{phone}</div>
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer id="contacts" style={{
+      background: "#1A1614", color: "rgba(255,255,255,0.7)",
+      padding: "72px 64px 32px"
+    }}>
+      <div className="wrap" style={{
+        display: "grid",
+        gridTemplateColumns: "1.4fr 1fr 1fr 1.2fr",
+        gap: 48, paddingBottom: 56,
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+      }}>
+        {/* Brand */}
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 18 }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: 12,
+              background: "#fff", color: "var(--terra)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 22,
+            }}>G</div>
+            <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 22, color: "#fff", letterSpacing: "-0.02em" }}>
+              Goldhome
+            </div>
+          </div>
+          <p style={{ fontSize: 14, lineHeight: 1.6, marginBottom: 20, maxWidth: 320 }}>
+            Производство СИП-панелей и строительство домов под ключ. Тюмень + Краснодар, доставка по всей России с 2014 года.
+          </p>
+          <div style={{ display: "flex", gap: 8 }}>
+            {["VK", "TG", "WA", "YT"].map(s => (
+              <button key={s} style={{
+                width: 40, height: 40, borderRadius: 10,
+                background: "rgba(255,255,255,0.05)",
+                color: "#fff", border: "1px solid rgba(255,255,255,0.08)",
+                fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 12,
+              }}>{s}</button>
+            ))}
+          </div>
+        </div>
+
+        <FooterCol title="Навигация" links={["Проекты", "Калькулятор", "Услуги", "FAQ", "Контакты"]}/>
+        <FooterCol title="Услуги" links={["Дом под ключ", "Домокомплект", "СИП-панели оптом", "Ипотека и маткапитал", "Дизайн-проект", "Гарантия"]}/>
+
+        {/* Offices */}
+        <div>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>
+            Два производства
+          </div>
+          <Office city="Тюмень" addr="ул. Велижанская, 66" phone="+7 927 328 95 37"/>
+          <Office city="Краснодар" addr="ул. Дзержинского, 100" phone="+7 988 303 85 33"/>
+        </div>
+      </div>
+
+      <div className="wrap" style={{
+        paddingTop: 28, display: "flex", justifyContent: "space-between",
+        alignItems: "center", fontSize: 13, color: "rgba(255,255,255,0.4)", flexWrap: "wrap", gap: 16
+      }}>
+        <div>© 2026 ООО «Голдхоум» · ИНН 7203111111</div>
+        <div style={{ display: "flex", gap: 24 }}>
+          <a href="#">Политика конфиденциальности</a>
+          <a href="#">Договор оферты</a>
+          <a href="#">Согласие на обработку ПДн</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ============================================================
+   MOBILE PREVIEW (design artifact)
+   ============================================================ */
+
+function PhoneTopBar() {
+  return (
+    <div style={{ padding: "16px 20px 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div style={{
+          width: 32, height: 32, borderRadius: 8,
+          background: "var(--ink)", color: "var(--terra)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 16,
+        }}>G</div>
+        <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 16 }}>Goldhome</div>
+      </div>
+      <button style={{ width: 36, height: 36, borderRadius: 10, background: "#fff", border: "1px solid var(--line)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Icon name="menu" size={18}/>
+      </button>
+    </div>
+  );
+}
+
+function PhoneHero() {
+  return (
+    <div style={{ height: "100%", overflow: "auto", paddingBottom: 80 }}>
+      <PhoneTopBar/>
+      <div style={{ padding: "20px 20px 12px" }}>
+        <div style={{ fontSize: 10, color: "var(--terra)", fontFamily: "var(--font-mono)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 10 }}>
+          Производство · Тюмень + Краснодар
+        </div>
+        <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 26, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+          Дом из СИП с выгодой до <span style={{ color: "var(--terra)" }}>600 000 ₽</span>
+        </div>
+        <div style={{ fontSize: 13, color: "var(--ink-2)", marginTop: 10, lineHeight: 1.45 }}>
+          Производим панели на своём заводе. Коробка за 1–2 недели, под ключ за 2–3 месяца.
+        </div>
+      </div>
+
+      <div style={{ padding: "0 20px" }}>
+        <Photo src={IMG.hero} alt="СИП-дом" h={180}/>
+      </div>
+
+      <div style={{ padding: "16px 20px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+        <RatingPill logo="Я" name="Яндекс" value="4.8" color="#FC3F1D"/>
+        <RatingPill logo="2Г" name="2ГИС" value="4.9" color="#5BB85B"/>
+      </div>
+
+      <div style={{ padding: "0 20px" }}>
+        <button className="btn btn-primary" style={{ width: "100%" }}>
+          Рассчитать стоимость <Icon name="arrow-right" size={16}/>
+        </button>
+        <div style={{ fontSize: 11, color: "var(--ink-3)", textAlign: "center", marginTop: 10 }}>
+          Расчёт за 15 минут на WhatsApp
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PhoneCalc() {
+  return (
+    <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+      <div style={{ padding: "16px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid var(--line)" }}>
+        <button style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--ink-2)", fontSize: 14 }}>
+          <Icon name="chevron-left" size={16}/> Назад
+        </button>
+        <div className="num" style={{ fontSize: 12, color: "var(--ink-3)" }}>Шаг 2 из 4</div>
+      </div>
+      <div style={{ padding: "0 20px" }}>
+        <div style={{ height: 4, background: "var(--line)", borderRadius: 99, marginTop: 16, overflow: "hidden" }}>
+          <div style={{ width: "50%", height: "100%", background: "var(--terra)", borderRadius: 99 }}/>
+        </div>
+      </div>
+      <div style={{ padding: "28px 20px", flex: 1 }}>
+        <div className="eyebrow" style={{ fontSize: 11 }}>Калькулятор</div>
+        <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 22, marginTop: 8, marginBottom: 24, lineHeight: 1.2 }}>
+          Какая площадь дома вам нужна?
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, marginBottom: 20 }}>
+          <button style={{ width: 44, height: 44, borderRadius: 99, border: "1.5px solid var(--line)", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Icon name="minus" size={16}/>
+          </button>
+          <div className="num" style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 44 }}>
+            85 <span style={{ fontSize: 18, color: "var(--ink-3)" }}>м²</span>
+          </div>
+          <button style={{ width: 44, height: 44, borderRadius: 99, border: "1.5px solid var(--line)", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Icon name="plus" size={16}/>
+          </button>
+        </div>
+        <div style={{ height: 4, background: "var(--line)", borderRadius: 99, position: "relative", marginBottom: 8 }}>
+          <div style={{ width: "30%", height: "100%", background: "var(--terra)", borderRadius: 99 }}/>
+          <div style={{
+            position: "absolute", left: "30%", top: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 24, height: 24, borderRadius: 99,
+            background: "#fff", border: "3px solid var(--terra)",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+          }}/>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)" }}>
+          <span>20 м²</span><span>250 м²</span>
+        </div>
+        <div style={{ background: "var(--bg-soft)", borderRadius: 14, padding: 16, marginTop: 24 }}>
+          <div style={{ fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>Примерно</div>
+          <div className="num" style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 26, marginTop: 4 }}>
+            от <span style={{ color: "var(--terra)" }}>2 850 000 ₽</span>
+          </div>
+        </div>
+      </div>
+      <div style={{ padding: 20, borderTop: "1px solid var(--line)" }}>
+        <button className="btn btn-primary" style={{ width: "100%" }}>
+          Далее <Icon name="arrow-right" size={16}/>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function PhoneProjects() {
+  return (
+    <div style={{ height: "100%", overflow: "auto", paddingBottom: 80 }}>
+      <PhoneTopBar/>
+      <div style={{ padding: "20px 20px 16px" }}>
+        <div className="eyebrow" style={{ fontSize: 11 }}>Портфолио</div>
+        <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 22, marginTop: 6, lineHeight: 1.15 }}>
+          412 построенных домов
+        </div>
+      </div>
+      <div style={{ padding: "0 20px 16px", display: "flex", gap: 6, overflowX: "auto" }}>
+        {["Под ключ", "Домокомплекты", "Каменные"].map((t, i) => (
+          <span key={t} style={{
+            padding: "8px 14px", borderRadius: 99, fontSize: 12,
+            background: i === 0 ? "var(--ink)" : "#fff",
+            color: i === 0 ? "#fff" : "var(--ink-2)",
+            border: i === 0 ? "none" : "1px solid var(--line)",
+            whiteSpace: "nowrap", fontWeight: 500,
+          }}>{t}</span>
+        ))}
+      </div>
+      <div style={{ padding: "0 20px", display: "flex", flexDirection: "column", gap: 12 }}>
+        {[
+          { name: "Ойкиа", m: 60, beds: 2, img: IMG.oykia },
+          { name: "Амальтея", m: 70, beds: 2, img: IMG.amaltea },
+        ].map((p, i) => (
+          <div key={i} style={{ background: "#fff", borderRadius: 16, border: "1px solid var(--line)", overflow: "hidden" }}>
+            <Photo src={p.img} alt={p.name} h={140} style={{ borderRadius: 0 }}/>
+            <div style={{ padding: 14 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 17 }}>{p.name}</div>
+                <div style={{ fontSize: 11, color: "var(--ink-3)" }}><span className="num">{p.m}</span> м² · {p.beds} спальни</div>
+              </div>
+              <a href="#calc" className="btn btn-ghost btn-sm" style={{ marginTop: 10, alignSelf: "stretch", display: "flex" }}>
+                Рассчитать по своим параметрам <Icon name="arrow-right" size={12}/>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PhoneCTA() {
+  return (
+    <div style={{ height: "100%", position: "relative", overflow: "hidden" }}>
+      <PhoneTopBar/>
+      <div style={{ padding: "24px 20px", paddingBottom: 100 }}>
+        <Photo src={IMG.amaltea} alt="дом" h={160} style={{ marginBottom: 16 }}/>
+        <div style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 24, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
+          Готовы узнать стоимость вашего дома?
+        </div>
+        <div style={{ fontSize: 13, color: "var(--ink-2)", marginTop: 10, lineHeight: 1.5 }}>
+          3 варианта расчёта на WhatsApp через 15 минут. Без обязательств.
+        </div>
+        <div style={{ display: "flex", gap: 8, marginTop: 20 }}>
+          {[["WA", "#25D366"], ["TG", "#26A5E4"], ["VK", "#0077FF"]].map(([l, c]) => (
+            <div key={l} style={{
+              width: 40, height: 40, borderRadius: 12,
+              background: c, color: "#fff", fontFamily: "var(--font-display)", fontWeight: 500, fontSize: 11,
+              display: "flex", alignItems: "center", justifyContent: "center"
+            }}>{l}</div>
+          ))}
+        </div>
+      </div>
+      <div style={{
+        position: "absolute", bottom: 0, left: 0, right: 0,
+        background: "rgba(255,255,255,0.95)", backdropFilter: "blur(12px)",
+        padding: 16, borderTop: "1px solid var(--line)",
+        display: "flex", gap: 8,
+      }}>
+        <button style={{
+          width: 48, height: 48, borderRadius: 14,
+          background: "var(--bg-soft)", color: "var(--ink)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          border: "1px solid var(--line)",
+        }}>
+          <Icon name="phone" size={18}/>
+        </button>
+        <button className="btn btn-primary" style={{ flex: 1, height: 48 }}>
+          Рассчитать <Icon name="arrow-right" size={16}/>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function MobilePreview() {
+  const [screen, setScreen] = React.useState("hero");
+
+  return (
+    <section style={{ padding: "120px 64px", background: "linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%)" }}>
+      <div className="wrap">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 64, alignItems: "center" }}>
+          <div>
+            <div className="eyebrow">Мобильная версия</div>
+            <h2 className="h-display h2" style={{ marginTop: 14, marginBottom: 18 }}>
+              60% заявок приходят со смартфона
+            </h2>
+            <p style={{ fontSize: 17, color: "var(--ink-2)", lineHeight: 1.55, marginBottom: 28 }}>
+              На мобильном — те же блоки, но переработанная иерархия: меню превращается в гамбургер, калькулятор разворачивается в полноэкранный квиз, таблицы — в карточки, sticky-CTA «Рассчитать» всегда снизу при скролле.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {[
+                ["hero", "1. Hero и рейтинги"],
+                ["calc", "2. Полноэкранный квиз-калькулятор"],
+                ["projects", "3. Карточки проектов"],
+                ["cta", "4. Sticky-CTA в footer"],
+              ].map(([k, l]) => (
+                <button key={k} onClick={() => setScreen(k)}
+                  style={{
+                    textAlign: "left", padding: "14px 18px", borderRadius: 14,
+                    background: screen === k ? "var(--ink)" : "#fff",
+                    color: screen === k ? "#fff" : "var(--ink)",
+                    border: screen === k ? "none" : "1px solid var(--line)",
+                    fontWeight: 500, fontSize: 15,
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    transition: "all .15s ease",
+                  }}>
+                  {l}
+                  {screen === k && <Icon name="arrow-right" size={16}/>}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div className="phone">
+              <div style={{ height: 28, display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div style={{ width: 100, height: 24, background: "#000", borderRadius: 99 }}/>
+              </div>
+              <div className="phone-screen">
+                {screen === "hero"     && <PhoneHero/>}
+                {screen === "calc"     && <PhoneCalc/>}
+                {screen === "projects" && <PhoneProjects/>}
+                {screen === "cta"      && <PhoneCTA/>}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   STYLE GUIDE (design artifact)
+   ============================================================ */
+
+function Swatch({ hex, name, desc, inverse }) {
+  return (
+    <div style={{
+      background: hex, border: "1px solid var(--line)",
+      borderRadius: 12, padding: 14, minHeight: 96,
+      color: inverse ? "#fff" : "var(--ink)",
+      display: "flex", flexDirection: "column", justifyContent: "space-between"
+    }}>
+      <div className="num" style={{ fontSize: 11, opacity: 0.7 }}>{hex}</div>
+      <div>
+        <div style={{ fontWeight: 600, fontSize: 13 }}>{name}</div>
+        <div style={{ fontSize: 11, opacity: 0.7 }}>{desc}</div>
+      </div>
+    </div>
+  );
+}
+
+function BtnRow({ label, children }) {
+  return (
+    <div>
+      <div style={{ fontSize: 12, color: "var(--ink-3)", marginBottom: 10 }}>{label}</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "start" }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function StyleGuide() {
+  return (
+    <section style={{ padding: "100px 64px", background: "#fff", borderTop: "1px solid var(--line)" }}>
+      <div className="wrap">
+        <div className="eyebrow">Stylesheet</div>
+        <h2 className="h-display h2" style={{ marginTop: 14, marginBottom: 8 }}>
+          Дизайн-система <span style={{ color: "var(--terra)" }}>Goldhome</span>
+        </h2>
+        <p className="lead" style={{ marginBottom: 56, maxWidth: 560 }}>
+          Тёплый, природный, не казённо-строительный. Похоже на лайфстайл-журнал о загородной жизни.
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 32 }}>
+          {/* Palette */}
+          <div className="card">
+            <div className="eyebrow" style={{ marginBottom: 18 }}>01 — Палитра</div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+              <Swatch hex="#F5F1EA" name="Фон" desc="тёплый кремовый"/>
+              <Swatch hex="#EEE7DA" name="Подложка" desc="разделители"/>
+              <Swatch hex="#FFFFFF" name="Surface" desc="карточки"/>
+              <Swatch hex="#C97B4A" name="Терракот" desc="CTA, акценты"/>
+              <Swatch hex="#A85F32" name="Терра-dark" desc="hover" inverse/>
+              <Swatch hex="#F2DCC8" name="Терра-soft" desc="иконки"/>
+              <Swatch hex="#2A2622" name="Графит" desc="текст" inverse/>
+              <Swatch hex="#8B6F47" name="Орех" desc="вторичный" inverse/>
+              <Swatch hex="#E2D8C5" name="Линия" desc="бордеры"/>
+            </div>
+          </div>
+
+          {/* Type */}
+          <div className="card">
+            <div className="eyebrow" style={{ marginBottom: 18 }}>02 — Типографика</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              <div>
+                <div style={{ fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)", marginBottom: 6 }}>
+                  UNBOUNDED · MEDIUM · ЗАГОЛОВКИ
+                </div>
+                <div className="h-display" style={{ fontSize: 38 }}>Дом мечты</div>
+              </div>
+              <div className="hr"/>
+              <div>
+                <div style={{ fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)", marginBottom: 6 }}>
+                  MANROPE · BODY
+                </div>
+                <div style={{ fontSize: 18, lineHeight: 1.5 }}>
+                  Производим панели на своих заводах и строим дома под ключ от Заполярья до субтропиков.
+                </div>
+              </div>
+              <div className="hr"/>
+              <div>
+                <div style={{ fontSize: 11, color: "var(--ink-3)", fontFamily: "var(--font-mono)", marginBottom: 6 }}>
+                  JETBRAINS MONO · ЦИФРЫ
+                </div>
+                <div className="num" style={{ fontSize: 28, fontWeight: 600, letterSpacing: "-0.01em" }}>
+                  2 850 000 ₽
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Buttons */}
+          <div className="card" style={{ gridColumn: "span 2" }}>
+            <div className="eyebrow" style={{ marginBottom: 18 }}>03 — Кнопки и состояния</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+              <BtnRow label="Primary">
+                <button className="btn btn-primary btn-sm">Рассчитать</button>
+                <button className="btn btn-primary">Рассчитать стоимость <Icon name="arrow-right" size={14}/></button>
+                <button className="btn btn-primary btn-lg">Получить расчёт <Icon name="arrow-right" size={16}/></button>
+              </BtnRow>
+              <BtnRow label="Ghost">
+                <button className="btn btn-ghost btn-sm">Подробнее</button>
+                <button className="btn btn-ghost">Все объекты</button>
+                <button className="btn btn-ghost btn-lg">Задать вопрос</button>
+              </BtnRow>
+              <BtnRow label="Dark">
+                <button className="btn btn-dark btn-sm">Смотреть</button>
+                <button className="btn btn-dark">Все 30 проектов</button>
+                <button className="btn btn-dark btn-lg">Заказать звонок</button>
+              </BtnRow>
+              <BtnRow label="Иконки">
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button style={{ width: 44, height: 44, borderRadius: 99, border: "1.5px solid var(--line)", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Icon name="phone" size={18}/>
+                  </button>
+                  <button style={{ width: 44, height: 44, borderRadius: 99, background: "var(--terra)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Icon name="arrow-right" size={18}/>
+                  </button>
+                  <button style={{ width: 44, height: 44, borderRadius: 99, background: "var(--ink)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Icon name="play" size={16}/>
+                  </button>
+                </div>
+              </BtnRow>
+            </div>
+          </div>
+
+          {/* Components */}
+          <div className="card" style={{ gridColumn: "span 2" }}>
+            <div className="eyebrow" style={{ marginBottom: 18 }}>04 — Компоненты</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, alignItems: "start" }}>
+              <div>
+                <div style={{ fontSize: 12, color: "var(--ink-3)", marginBottom: 10 }}>Чипы</div>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  <span className="chip">85 м²</span>
+                  <span className="chip">2 спальни</span>
+                  <span className="chip chip-terra">Главное</span>
+                  <span className="chip chip-dark">Заполярье</span>
+                </div>
+              </div>
+              <div>
+                <div style={{ fontSize: 12, color: "var(--ink-3)", marginBottom: 10 }}>Рейтинговая плашка</div>
+                <RatingPill logo="Я" name="Яндекс" value="4.8" color="#FC3F1D"/>
+              </div>
+              <div>
+                <div style={{ fontSize: 12, color: "var(--ink-3)", marginBottom: 10 }}>Чекбокс</div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <span style={{ width: 20, height: 20, borderRadius: 6, background: "var(--terra)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>
+                    <Icon name="check" size={13} stroke={2.5}/>
+                  </span>
+                  <span style={{ width: 20, height: 20, borderRadius: 6, background: "#fff", border: "1.5px solid var(--line)", display: "inline-block" }}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   APP ROOT
+   ============================================================ */
+
+function App() {
+  return (
+    <div className="page">
+      <Header/>
+      <Hero/>
+      <Portfolio/>
+      <WhomFor/>
+      <Services/>
+      <Reasons/>
+      <Comparison/>
+      <FAQ/>
+      <FinalCTA/>
+      <Footer/>
+      <MobilePreview/>
+      <StyleGuide/>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
