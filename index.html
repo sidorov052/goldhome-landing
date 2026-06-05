@@ -7,32 +7,32 @@
 <meta name="description" content="Goldhome — производитель СИП-панелей и строительство домов под ключ. Тюмень + Краснодар. Более 400 построенных домов, гарантия 25 лет.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <style>
 /* ---- Goldhome Landing — Design System ---- */
 :root {
-  --bg: #F5F1EA;
-  --bg-soft: #EEE7DA;
+  --bg: #F6F8F4;
+  --bg-soft: #EDF1E8;
   --surface: #FFFFFF;
-  --ink: #2A2622;
-  --ink-2: #5A524A;
-  --ink-3: #8C8378;
-  --line: #E2D8C5;
-  --terra: #C97B4A;
-  --terra-dark: #A85F32;
-  --terra-soft: #F2DCC8;
-  --walnut: #8B6F47;
-  --green: #4E6B3F;
+  --ink: #2B2E28;
+  --ink-2: #54584E;
+  --ink-3: #888D80;
+  --line: #E3E7DD;
+  --terra: #7DA05E;
+  --terra-dark: #6A8B4D;
+  --terra-soft: #E7EFDD;
+  --walnut: #6F7D5E;
+  --green: #5A7740;
   --radius-sm: 10px;
   --radius: 18px;
   --radius-lg: 28px;
-  --shadow-sm: 0 2px 4px rgba(42,38,34,.04), 0 8px 24px -12px rgba(42,38,34,.08);
-  --shadow: 0 4px 12px rgba(42,38,34,.06), 0 24px 48px -24px rgba(42,38,34,.18);
+  --shadow-sm: 0 2px 4px rgba(43,46,40,.04), 0 8px 24px -12px rgba(43,46,40,.08);
+  --shadow: 0 4px 12px rgba(43,46,40,.06), 0 24px 48px -24px rgba(43,46,40,.16);
   --font-sans: 'Manrope', system-ui, sans-serif;
-  --font-display: 'Unbounded', 'Manrope', sans-serif;
+  --font-display: 'Lora', Georgia, 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 * { box-sizing: border-box; }
@@ -65,9 +65,9 @@ img { display: block; max-width: 100%; }
 }
 .h-display {
   font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.12;
   color: var(--ink);
   margin: 0;
 }
@@ -84,7 +84,7 @@ img { display: block; max-width: 100%; }
   transition: transform .15s ease, background .15s ease, box-shadow .2s ease;
   white-space: nowrap;
 }
-.btn-primary { background: var(--terra); color: #fff; box-shadow: 0 6px 18px -6px rgba(201,123,74,.6); }
+.btn-primary { background: var(--terra); color: #fff; box-shadow: 0 6px 18px -6px rgba(125,160,94,.6); }
 .btn-primary:hover { background: var(--terra-dark); transform: translateY(-1px); }
 .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
 .btn-ghost:hover { background: var(--bg-soft); border-color: var(--ink-3); }
@@ -142,7 +142,7 @@ img { display: block; max-width: 100%; }
   font-size: 13px; font-weight: 500;
   border: 1px solid var(--line);
 }
-.chip-terra { background: #FBEDDF; color: var(--terra-dark); border-color: #F2DCC8; }
+.chip-terra { background: #E7EFDD; color: #5A7740; border-color: #D4E2C4; }
 .chip-dark  { background: var(--ink); color: #fff; border-color: var(--ink); }
 
 /* Divider */
@@ -197,7 +197,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background: var(--terra);
   border: 3px solid #fff;
-  box-shadow: 0 2px 8px rgba(201,123,74,.4);
+  box-shadow: 0 2px 8px rgba(125,160,94,.4);
   cursor: pointer;
 }
 input[type="range"]::-moz-range-thumb {
@@ -206,7 +206,7 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
   background: var(--terra);
   border: 3px solid #fff;
-  box-shadow: 0 2px 8px rgba(201,123,74,.4);
+  box-shadow: 0 2px 8px rgba(125,160,94,.4);
   cursor: pointer;
 }
 </style>
@@ -365,7 +365,7 @@ function CheckRow({ checked, onChange, label, tight }) {
       padding: tight ? "0 16px" : "12px 14px",
       height: tight ? 56 : "auto",
       borderRadius: 12,
-      background: checked ? "rgba(201,123,74,0.08)" : "var(--bg)",
+      background: checked ? "rgba(125,160,94,0.10)" : "var(--bg)",
       border: checked ? "1.5px solid var(--terra)" : "1.5px solid var(--line)",
       textAlign: "left", lineHeight: 1.3, fontSize: 13, color: "var(--ink)",
       transition: "all .15s ease"
@@ -651,7 +651,7 @@ function UspCard({ icon, title, body, accent }) {
     }}>
       <div style={{
         width: 36, height: 36, borderRadius: 10,
-        background: accent ? "rgba(201,123,74,0.18)" : "var(--bg-soft)",
+        background: accent ? "rgba(125,160,94,0.18)" : "var(--bg-soft)",
         color: "var(--terra)",
         display: "flex", alignItems: "center", justifyContent: "center",
         marginBottom: 14
@@ -1028,7 +1028,7 @@ function Services() {
                 }}/>
                 <div style={{ position: "absolute", bottom: 16, left: 24 }}>
                   <div className="chip" style={s.accent
-                    ? { background: "rgba(201,123,74,0.25)", color: "#FBC79B", border: "1px solid rgba(201,123,74,0.4)" }
+                    ? { background: "rgba(125,160,94,0.22)", color: "#C2D9A4", border: "1px solid rgba(125,160,94,0.40)" }
                     : { alignSelf: "start" }}>
                     {s.tag}
                   </div>
@@ -1043,7 +1043,7 @@ function Services() {
 
               <div className="num" style={{
                 fontSize: 22, fontWeight: 600,
-                color: s.accent ? "#FBC79B" : "var(--terra)",
+                color: s.accent ? "#C2D9A4" : "var(--terra)",
               }}>
                 {s.price}
               </div>
@@ -1352,7 +1352,7 @@ function ContactBlock({ icon, title, value }) {
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
       <div style={{
         width: 48, height: 48, borderRadius: 14,
-        background: "rgba(201,123,74,0.18)", color: "var(--terra)",
+        background: "rgba(125,160,94,0.18)", color: "var(--terra)",
         display: "flex", alignItems: "center", justifyContent: "center",
       }}>
         <Icon name={icon} size={20}/>
